@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FSM Ltda. | Automatización industrial y sistemas de control ABB</title>
+<meta name="description" content="FSM Ltda.: ingeniería, integración y soporte de sistemas de control ABB 800xA para minería, celulosa e infraestructura. Distribuidor autorizado ABB en Viña del Mar desde 2002.">
+<meta name="theme-color" content="#0E0F11">
+<link rel="icon" href="assets/brand/fsm-logo.svg" type="image/svg+xml">
+<meta property="og:title" content="FSM Ltda. | Automatización industrial ABB">
+<meta property="og:description" content="Más de 80 proyectos de control en minería, celulosa e infraestructura. ABB Authorized Value Provider.">
+<meta property="og:image" content="assets/img/candelaria.webp">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/candelaria.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FSM Ltda. — Servicios y Aplicaciones de Ingeniería de Sistemas y Cía. Limitada",
+  "url": "https://www.fsmltda.cl/",
+  "foundingDate": "2002",
+  "email": "fidel.salazar@fsmltda.cl",
+  "address": {"@type": "PostalAddress", "streetAddress": "Álvarez 660, Dpto. 71A", "addressLocality": "Viña del Mar", "addressRegion": "Valparaíso", "addressCountry": "CL"}
+}
+</script>
+<style>
+:root{
+  --red:#E8312A; --red-d:#C4241E;
+  --ink:#0E0F11; --ink-2:#16181B; --ink-3:#1F2226;
+  --paper:#F3F1EC; --paper-2:#E8E5DE;
+  --t-dark:#121314; --t-mid:#5E626A; --t-light:#F4F2EE; --t-dim:#9A9DA3;
+  --line-d:rgba(255,255,255,.12); --line-l:rgba(18,19,20,.14);
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --wrap:1240px; --gut:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--t-light);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.skip{position:absolute;left:-999px;top:0;background:var(--red);color:#fff;padding:8px 14px;z-index:99}
+.skip:focus{left:8px;top:8px}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* ---------- Header ---------- */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(14,15,17,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line-d)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.hdr .logo img{height:38px;width:auto}
+.nav{display:flex;gap:28px;align-items:center}
+.nav a{font-size:14px;font-weight:500;color:rgba(244,242,238,.82);transition:color .2s}
+.nav a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14px;padding:12px 20px;border-radius:2px;transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-d)}
+.btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.btn .arr{font-family:var(--mono);font-size:13px}
+.menu-btn{display:none;background:none;border:1px solid var(--line-d);color:#fff;width:44px;height:44px;border-radius:2px;cursor:pointer}
+.menu-btn span{display:block;width:18px;height:2px;background:#fff;margin:4px auto}
+
+/* ---------- Hero (scroll-driven) ---------- */
+.hero{position:relative;height:230vh;background:var(--ink)}
+.hero-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url(assets/img/candelaria.webp) center 58%/cover no-repeat;transform:scale(var(--s,1.28));transform-origin:62% 60%;will-change:transform}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,15,17,.72) 0%,rgba(14,15,17,.25) 38%,rgba(14,15,17,.55) 72%,rgba(14,15,17,.95) 100%),linear-gradient(90deg,rgba(14,15,17,.75) 0%,rgba(14,15,17,0) 62%);opacity:var(--o,1)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line-d) 1px,transparent 1px),linear-gradient(90deg,var(--line-d) 1px,transparent 1px);background-size:120px 120px;opacity:calc(var(--p,0) * .5);mask-image:radial-gradient(ellipse at 60% 55%,#000 20%,transparent 75%)}
+.hero-copy{position:absolute;left:0;right:0;bottom:clamp(64px,12vh,120px)}
+.hero-copy .inner{max-width:780px;opacity:var(--c1,1);transform:translateY(calc(var(--p,0) * -60px))}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:#fff;margin-bottom:22px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--red)}
+h1{font-size:clamp(38px,6.2vw,78px);line-height:1.02;font-weight:700;letter-spacing:-.025em}
+h1 em{font-style:normal;color:var(--red)}
+.hero-sub{margin-top:22px;font-size:clamp(16px,1.6vw,19px);color:rgba(244,242,238,.82);max-width:600px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.hero-badge{position:absolute;top:96px;right:max(var(--gut),calc((100vw - var(--wrap))/2 + var(--gut)));width:92px;background:#fff;padding:6px;border-radius:2px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.hud{position:absolute;inset:0;pointer-events:none;opacity:var(--c2,0)}
+.hud .tag{position:absolute;display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.hud .tag i{width:12px;height:12px;border:2px solid var(--red);border-radius:50%;background:rgba(232,49,42,.25);box-shadow:0 0 0 6px rgba(232,49,42,.15)}
+.hud .tag b{font-weight:500;background:rgba(14,15,17,.78);padding:6px 10px;border-left:2px solid var(--red)}
+.hud .t1{left:57%;top:43%}.hud .t2{left:76%;top:61%}.hud .t3{left:27%;top:39%}
+.hud-card{position:absolute;left:max(var(--gut),calc((100vw - var(--wrap))/2 + var(--gut)));bottom:clamp(40px,9vh,96px);width:min(460px,calc(100% - 2*var(--gut)));background:rgba(14,15,17,.88);border:1px solid var(--line-d);border-top:2px solid var(--red);padding:22px 24px;transform:translateY(calc((1 - var(--c2,0)) * 30px))}
+.hud-card h2{font-size:22px;font-weight:600;letter-spacing:-.01em;margin:8px 0 14px}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:14px}
+.spec dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t-dim);padding-top:2px}
+.spec dd{color:#fff}
+.hero-progress{position:absolute;right:var(--gut);bottom:28px;display:flex;align-items:center;gap:12px;color:var(--t-dim)}
+.hero-progress .bar{width:120px;height:2px;background:var(--line-d);position:relative;overflow:hidden}
+.hero-progress .bar::after{content:"";position:absolute;inset:0;background:var(--red);transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* ---------- Generic sections ---------- */
+section{position:relative}
+.sec{padding:clamp(72px,10vw,128px) 0}
+.sec-head{display:grid;grid-template-columns:200px 1fr;gap:32px;margin-bottom:clamp(40px,6vw,64px);align-items:start}
+.sec-head .idx{padding-top:10px;border-top:2px solid var(--red);color:var(--t-dim)}
+.sec-head h2{font-size:clamp(30px,4vw,50px);line-height:1.06;font-weight:700;letter-spacing:-.02em;max-width:820px}
+.sec-head p{margin-top:16px;max-width:640px;font-size:17px;color:var(--t-dim)}
+.light{background:var(--paper);color:var(--t-dark)}
+.light .sec-head .idx,.light .sec-head p{color:var(--t-mid)}
+
+/* ---------- Numbers ---------- */
+.nums{border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);background:var(--ink)}
+.nums .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.num{padding:36px 24px 32px;border-left:1px solid var(--line-d)}
+.num:first-child{border-left:0;padding-left:0}
+.num strong{display:block;font-size:clamp(40px,5vw,64px);font-weight:700;letter-spacing:-.03em;line-height:1}
+.num strong sup{color:var(--red);font-size:.5em;vertical-align:top;margin-right:2px}
+.num span{display:block;margin-top:12px;color:var(--t-dim);font-size:14px;max-width:200px}
+
+/* ---------- Clients (catalog table) ---------- */
+.clients{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-l)}
+.cl-col{padding:28px 28px 32px;border-right:1px solid var(--line-l)}
+.cl-col:first-child{padding-left:0}
+.cl-col:last-child{border-right:0}
+.cl-col header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.cl-col h3{font-size:20px;font-weight:700}
+.cl-col .cnt{color:var(--red);font-family:var(--mono);font-size:12px}
+.cl-col .ph{aspect-ratio:16/9;overflow:hidden;margin:16px 0 18px;background:var(--paper-2)}
+.cl-col .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15)}
+.cl-col ul{list-style:none}
+.cl-col li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-l);font-size:15px;font-weight:500}
+.cl-col li small{font-family:var(--mono);font-size:10.5px;color:var(--t-mid);letter-spacing:.06em;text-align:right;align-self:center}
+
+/* ---------- Services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-d);border:1px solid var(--line-d)}
+.svc{background:var(--ink);padding:30px 28px 26px;display:flex;flex-direction:column;min-height:330px;transition:background .25s}
+.svc:hover{background:var(--ink-2)}
+.svc .code{display:flex;justify-content:space-between;color:var(--t-dim)}
+.svc .code b{color:var(--red);font-weight:500}
+.svc h3{font-size:24px;font-weight:600;letter-spacing:-.01em;margin:44px 0 12px}
+.svc p{color:var(--t-dim);font-size:15px}
+.svc details{margin-top:auto;padding-top:22px;border-top:1px solid var(--line-d)}
+.svc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff;padding-top:14px}
+.svc summary::-webkit-details-marker{display:none}
+.svc summary::after{content:"+";color:var(--red);font-size:16px;line-height:1}
+.svc details[open] summary::after{content:"–"}
+.svc details ul{list-style:none;margin-top:14px}
+.svc details li{font-size:14px;color:rgba(244,242,238,.85);padding:7px 0 7px 18px;position:relative;border-bottom:1px dashed var(--line-d)}
+.svc details li::before{content:"";position:absolute;left:0;top:15px;width:8px;height:2px;background:var(--red)}
+
+/* ---------- ABB products ---------- */
+.abb{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:start}
+.abb-side .badges{display:flex;gap:16px;align-items:flex-end;margin:28px 0}
+.abb-side .badges img{background:#fff;border:1px solid var(--line-l);padding:6px}
+.abb-side p{color:var(--t-mid);margin-bottom:14px;font-size:16px}
+.abb-side .cert{display:flex;gap:16px;align-items:center;padding:16px;border:1px solid var(--line-l);background:#fff;margin-top:24px}
+.abb-side .cert img{width:70px;border:1px solid var(--line-l)}
+.abb-side .cert div{font-size:14px;color:var(--t-mid)}
+.abb-side .cert strong{display:block;color:var(--t-dark);font-size:15px}
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:2px solid var(--t-dark)}
+.prod{padding:22px 22px 22px 0;border-bottom:1px solid var(--line-l)}
+.prod:nth-child(even){padding-left:22px;padding-right:0;border-left:1px solid var(--line-l)}
+.prod .mono{color:var(--t-mid)}
+.prod h3{font-size:18px;font-weight:700;margin:6px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-family:var(--mono);font-size:11px;padding:4px 8px;border:1px solid var(--line-l);background:#fff;color:var(--t-dark)}
+
+/* ---------- Projects ---------- */
+.proj-list{display:grid;gap:clamp(40px,6vw,72px)}
+.proj{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,56px);align-items:center}
+.proj:nth-child(even) .proj-ph{order:2}
+.proj-ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--ink-3)}
+.proj-ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.proj:hover .proj-ph img{transform:scale(1.03)}
+.proj-ph .stamp{position:absolute;left:0;top:0;background:var(--red);color:#fff;padding:8px 12px}
+.proj h3{font-size:clamp(24px,2.6vw,34px);line-height:1.1;font-weight:700;letter-spacing:-.015em;margin:12px 0 16px}
+.proj p{color:var(--t-dim);margin-bottom:22px}
+.proj .spec{border-top:1px solid var(--line-d);padding-top:16px}
+.proj .spec dd{color:rgba(244,242,238,.9)}
+.proj-mini{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:clamp(40px,6vw,72px)}
+.mini{display:grid;grid-template-columns:44% 1fr;background:var(--ink-2);border:1px solid var(--line-d)}
+.mini img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+.mini div{padding:22px}
+.mini h3{font-size:19px;font-weight:600;margin:10px 0 8px}
+.mini p{font-size:14px;color:var(--t-dim)}
+
+/* ---------- Field gallery ---------- */
+.field{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,18vw,230px);gap:10px}
+.field figure{position:relative;overflow:hidden;background:var(--ink-3)}
+.field img{width:100%;height:100%;object-fit:cover}
+.field figcaption{position:absolute;left:0;bottom:0;background:rgba(14,15,17,.82);color:#fff;padding:7px 11px}
+.f1{grid-column:span 8;grid-row:span 2}.f2{grid-column:span 4;grid-row:span 2}
+.f3{grid-column:span 4}.f4{grid-column:span 4}.f5{grid-column:span 4}
+
+/* ---------- About ---------- */
+.about{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(32px,5vw,72px)}
+.about .big{font-size:clamp(24px,2.6vw,32px);line-height:1.3;font-weight:500;letter-spacing:-.01em}
+.about .big strong{color:var(--red);font-weight:700}
+.mv{display:grid;gap:0;border-top:2px solid var(--t-dark)}
+.mv div{padding:22px 0;border-bottom:1px solid var(--line-l)}
+.mv h3{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px;font-weight:500}
+.mv p{color:var(--t-mid)}
+.timeline{display:flex;gap:0;margin-top:36px;border-top:1px solid var(--line-l)}
+.timeline div{flex:1;padding:14px 12px 0 0}
+.timeline b{display:block;font-size:22px}
+.timeline span{font-size:13px;color:var(--t-mid)}
+
+/* ---------- Contact ---------- */
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px)}
+.c-list{list-style:none;border-top:1px solid var(--line-d);margin-top:28px}
+.c-list li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-d)}
+.c-list .mono{color:var(--t-dim);padding-top:3px}
+.c-list a:hover{color:var(--red)}
+form{background:var(--ink-2);border:1px solid var(--line-d);border-top:2px solid var(--red);padding:clamp(22px,3vw,36px)}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;margin-bottom:16px}
+label span{display:block;margin-bottom:8px;color:var(--t-dim)}
+input,select,textarea{width:100%;background:var(--ink);border:1px solid var(--line-d);color:#fff;font:inherit;font-size:15px;padding:12px 14px;border-radius:2px}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red)}
+form .btn{width:100%;justify-content:center;border:0;cursor:pointer;font-family:inherit;font-size:15px;padding:15px}
+form small{display:block;margin-top:12px;color:var(--t-dim);font-size:12.5px}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--line-d);padding:40px 0 48px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+footer img{height:34px}
+footer p{color:var(--t-dim);font-size:13px}
+
+/* ---------- Reveal ---------- */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1020px){
+  .nav{display:none}
+  .menu-btn{display:block}
+  .nav.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--ink);border-bottom:1px solid var(--line-d);padding:8px var(--gut) 20px}
+  .nav.open a{padding:14px 0;border-bottom:1px solid var(--line-d);font-size:16px}
+  .nav.open .btn{margin-top:16px;justify-content:center;border-bottom:0}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .abb,.contact,.about{grid-template-columns:1fr}
+  .clients{grid-template-columns:1fr}
+  .cl-col{padding:28px 0;border-right:0;border-bottom:1px solid var(--line-l)}
+}
+@media (max-width:720px){
+  .hero{height:190vh}
+  .hero-badge{top:84px;width:68px}
+  .hud .t1{left:40%;top:30%}.hud .t2{left:52%;top:42%}.hud .t3{display:none}
+  .hero-progress{display:none}
+  .sec-head{grid-template-columns:1fr;gap:18px}
+  .sec-head .idx{max-width:120px}
+  .nums .wrap{grid-template-columns:repeat(2,1fr)}
+  .num{padding:26px 16px}
+  .num:nth-child(odd){border-left:0;padding-left:0}
+  .num:nth-child(-n+2){border-bottom:1px solid var(--line-d)}
+  .svc-grid{grid-template-columns:1fr}
+  .svc{min-height:0}
+  .svc h3{margin-top:28px}
+  .prod-grid{grid-template-columns:1fr}
+  .prod,.prod:nth-child(even){padding:20px 0;border-left:0}
+  .proj{grid-template-columns:1fr}
+  .proj:nth-child(even) .proj-ph{order:0}
+  .proj-mini{grid-template-columns:1fr}
+  .field{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .f1{grid-column:span 2;grid-row:span 2}.f2{grid-column:span 2;grid-row:span 2}
+  .f3,.f4{grid-column:span 1}.f5{grid-column:span 2}
+  .f-row{grid-template-columns:1fr}
+  .c-list li{grid-template-columns:1fr;gap:4px}
+  .timeline{flex-wrap:wrap}
+  .timeline div{flex:1 1 45%;padding-bottom:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero{height:auto}
+  .hero-stage{position:relative;height:100vh}
+  .hero-img{transform:none}
+  .hud{display:none}
+  .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#servicios">Saltar al contenido</a>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="FSM Ltda., inicio"><img src="assets/brand/fsm-logo.svg" alt="FSM Ltda." width="68" height="38"></a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#abb">Productos ABB</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a class="btn btn-red" href="#contacto">Solicitar cotización <span class="arr">→</span></a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO: scroll-driven aerial (inspirado en Freight Scroll Hero) -->
+<section class="hero" id="hero" aria-label="Presentación">
+  <div class="hero-stage">
+    <div class="hero-img" role="img" aria-label="Vista aérea de la planta de Minera Candelaria, en el desierto de Atacama"></div>
+    <div class="hero-shade"></div>
+    <div class="hero-grid"></div>
+    <img class="hero-badge" src="assets/img/abb-authorized-value-provider.png" alt="ABB Authorized Value Provider" width="155" height="144">
+
+    <div class="hero-copy">
+      <div class="wrap"><div class="inner">
+        <div class="eyebrow mono">Integrador y distribuidor ABB · Desde 2002</div>
+        <h1>Sistemas de control que mantienen <em>la operación en marcha.</em></h1>
+        <p class="hero-sub">Ingeniería, integración y soporte de sistemas ABB 800xA para minería, celulosa e infraestructura. Más de 80 proyectos ejecutados en Chile.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-red" href="#contacto">Solicitar cotización <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#proyectos">Ver proyectos</a>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="hud" aria-hidden="true">
+      <div class="tag t1"><i></i><b>Planta concentradora</b></div>
+      <div class="tag t2"><i></i><b>Espesador · DCS</b></div>
+      <div class="tag t3"><i></i><b>Correa transportadora</b></div>
+      <div class="hud-card">
+        <span class="mono" style="color:var(--red)">Proyecto en terreno</span>
+        <h2>Minera Candelaria: Depósito de Relaves Los Diques</h2>
+        <dl class="spec">
+          <dt>Sistema</dt><dd>DCS ABB 800xA, versión 6.0</dd>
+          <dt>Alcance</dt><dd>4 gabinetes DCS y 5 gabinetes Remote I/O</dd>
+          <dt>Gabinetes</dt><dd>NEMA 12 y NEMA 4X</dd>
+          <dt>Estado</dt><dd>Pruebas FAT aprobadas por el cliente</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="hero-progress mono" aria-hidden="true"><span>Desplázate</span><div class="bar"></div></div>
+  </div>
+</section>
+
+<!-- NÚMEROS -->
+<section class="nums" aria-label="FSM en números">
+  <div class="wrap">
+    <div class="num rv"><strong><sup>+</sup>20</strong><span>años de experiencia promedio del equipo</span></div>
+    <div class="num rv"><strong><sup>+</sup>40</strong><span>proyectos en minería</span></div>
+    <div class="num rv"><strong><sup>+</sup>30</strong><span>proyectos en celulosa y papel</span></div>
+    <div class="num rv"><strong><sup>+</sup>10</strong><span>proyectos en infraestructura</span></div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section class="sec light" id="clientes" aria-labelledby="t-clientes">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="idx mono">01 / Clientes</div>
+      <div>
+        <h2 id="t-clientes">Plantas donde nuestros sistemas de control ya están operando.</h2>
+        <p>Clientes finales de los proyectos ejecutados por FSM en las tres industrias donde trabajamos.</p>
+      </div>
+    </div>
+    <div class="clients">
+      <div class="cl-col rv">
+        <header><h3>Minería</h3><span class="cnt">+40 proyectos</span></header>
+        <div class="ph"><img src="assets/img/esperanza-sm.webp" alt="Rajo con camiones de extracción en Minera Esperanza" loading="lazy" width="800" height="512"></div>
+        <ul>
+          <li>Minera Escondida</li><li>Codelco</li><li>Minera Collahuasi</li><li>Minera Candelaria</li>
+          <li>Minera Esperanza</li><li>Minera Michilla</li><li>Pascua Lama</li><li>SQM</li>
+        </ul>
+      </div>
+      <div class="cl-col rv">
+        <header><h3>Celulosa y papel</h3><span class="cnt">+30 proyectos</span></header>
+        <div class="ph"><img src="assets/img/arauco-sm.webp" style="object-position:center 75%" alt="Planta de celulosa Arauco reflejada en el agua" loading="lazy" width="800" height="640"></div>
+        <ul>
+          <li>Celulosa Arauco y Constitución <small>Arauco · Constitución · Licancel · Valdivia</small></li>
+          <li>CMPC <small>Puente Alto · Talagante · Laja</small></li>
+        </ul>
+      </div>
+      <div class="cl-col rv">
+        <header><h3>Infraestructura</h3><span class="cnt">+10 proyectos</span></header>
+        <div class="ph"><img src="assets/img/tunel-chacabuco-sm.webp" alt="Acceso al Túnel Chacabuco" loading="lazy" width="800" height="488"></div>
+        <ul>
+          <li>Túnel Chacabuco</li><li>Costanera Norte</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="sec" id="servicios" aria-labelledby="t-servicios">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="idx mono">02 / Servicios</div>
+      <div>
+        <h2 id="t-servicios">Del primer plano a la mantención 24×365, un solo equipo.</h2>
+        <p>Acompañamos el ciclo completo de un proyecto de automatización: lo definimos, lo diseñamos, lo implementamos, capacitamos a su gente y lo mantenemos funcionando.</p>
+      </div>
+    </div>
+    <div class="svc-grid">
+      <article class="svc rv">
+        <div class="code mono"><b>S-01</b><span>Definición</span></div>
+        <h3>Ingeniería básica</h3>
+        <p>Definimos los lineamientos del proyecto a partir de un levantamiento de la situación actual y de los requerimientos del cliente.</p>
+        <details><summary>Entregables</summary><ul>
+          <li>Arquitectura del sistema de control</li><li>Hojas de datos y especificaciones de equipos</li><li>Listados de equipos y materiales</li><li>Dimensionamiento de entradas y salidas</li><li>Cálculo de cargas térmicas y de procesamiento</li><li>Filosofía de control y estándares</li>
+        </ul></details>
+      </article>
+      <article class="svc rv">
+        <div class="code mono"><b>S-02</b><span>Diseño</span></div>
+        <h3>Ingeniería de detalles</h3>
+        <p>Con la ingeniería básica aprobada, emitimos los documentos de trabajo para construir e implementar el proyecto.</p>
+        <details><summary>Entregables</summary><ul>
+          <li>Diseño de gabinetes de control (CPU y módulos E/S)</li><li>Planos de conexionado</li><li>Diagramas lógicos</li><li>Listado de entradas y salidas</li><li>Diseño y construcción de pantallas de operación</li><li>Configuración de aplicaciones de control</li>
+        </ul></details>
+      </article>
+      <article class="svc rv">
+        <div class="code mono"><b>S-03</b><span>Transición</span></div>
+        <h3>Migraciones</h3>
+        <p>Reemplazamos sistemas de control obsoletos con un impacto mínimo y controlado sobre la producción.</p>
+        <details><summary>Cómo lo hacemos</summary><ul>
+          <li>Levantamiento del sistema antiguo</li><li>Diseño y elección del nuevo sistema</li><li>Pruebas previas al cambio</li><li>Implementación en planta</li><li>Acompañamiento posterior a la puesta en marcha</li>
+        </ul></details>
+      </article>
+      <article class="svc rv">
+        <div class="code mono"><b>S-04</b><span>Soporte</span></div>
+        <h3>Contratos de mantención</h3>
+        <p>Mantenemos su sistema de control rindiendo, y reducimos costos a largo plazo sin sacrificar seguridad ni calidad.</p>
+        <details><summary>Incluye</summary><ul>
+          <li>Mantención preventiva y predictiva</li><li>Análisis de operación</li><li>Manejo de repuestos</li><li>Asistencia 24×365</li><li>Apoyo telefónico o presencial</li>
+        </ul></details>
+      </article>
+      <article class="svc rv">
+        <div class="code mono"><b>S-05</b><span>Personas</span></div>
+        <h3>Capacitación</h3>
+        <p>Un plan por nivel para que el nuevo sistema se adopte y se use bien en toda la organización.</p>
+        <details><summary>Niveles</summary><ul>
+          <li>Gerencial y administrativo: reportes y datos para decidir</li><li>Supervisor: estrategias de control y operación</li><li>Mantención: rutinas, alarmas y fallas</li><li>Operación: uso diario del sistema</li>
+        </ul></details>
+      </article>
+      <article class="svc rv">
+        <div class="code mono"><b>S-06</b><span>Suministro</span></div>
+        <h3>Distribución de equipos ABB</h3>
+        <p>Distribuimos equipos de automatización ABB con un equipo certificado por la marca y conocimiento acabado de cada producto.</p>
+        <details><summary>Respaldo</summary><ul>
+          <li>ABB Authorized Value Provider</li><li>Garantía ABB de 18 meses para equipos</li><li>Garantía FSM de 1 año para servicios</li>
+        </ul></details>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS ABB -->
+<section class="sec light" id="abb" aria-labelledby="t-abb">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="idx mono">03 / Productos ABB</div>
+      <div><h2 id="t-abb">Catálogo ABB System 800xA, con soporte local en la Quinta Región.</h2></div>
+    </div>
+    <div class="abb">
+      <div class="abb-side rv">
+        <p>Nuestra visión es ser líderes en la Quinta Región en la distribución de equipos de control ABB. Por eso no solo vendemos el equipo: lo integramos, lo configuramos y lo mantenemos.</p>
+        <div class="badges">
+          <img src="assets/img/abb-authorized-value-provider.png" alt="ABB Authorized Value Provider" width="110" height="102" loading="lazy">
+          <img src="assets/img/garantia-abb-18-meses.jpg" alt="Garantía ABB de 18 meses para equipos" width="92" height="111" loading="lazy">
+        </div>
+        <div class="cert">
+          <img src="assets/img/certificado-abb.jpg" alt="Certificado ABB Authorized Value Provider, System Integrator, emitido a FSM Ltda." width="70" height="99" loading="lazy">
+          <div><strong>Certificado ABB System Integrator</strong>FSM Ltda. está autorizada por ABB Control Technologies en ingeniería, venta y soporte de System 800xA.</div>
+        </div>
+      </div>
+      <div class="prod-grid">
+        <div class="prod rv"><span class="mono">P-01</span><h3>Control y E/S</h3><div class="chips"><span>AC 800M</span><span>S800 I/O</span><span>S900 I/O</span></div></div>
+        <div class="prod rv"><span class="mono">P-02</span><h3>Seguridad</h3><div class="chips"><span>AC 800M High Integrity</span><span>S800 I/O High Integrity</span></div></div>
+        <div class="prod rv"><span class="mono">P-03</span><h3>Interfaces de operador</h3><div class="chips"><span>Operator Workplace</span><span>Extended Workplace</span><span>Mobile Workplace</span><span>Paneles de proceso</span><span>Gestión de alarmas</span><span>Simulador de entrenamiento</span></div></div>
+        <div class="prod rv"><span class="mono">P-04</span><h3>Gestión de activos</h3><div class="chips"><span>Asset Optimization</span><span>Maintenance Workplace</span><span>Conectividad CMMS</span></div></div>
+        <div class="prod rv"><span class="mono">P-05</span><h3>Comunicación de campo</h3><div class="chips"><span>Profibus</span><span>Profinet</span><span>HART</span><span>WirelessHART</span><span>Foundation Fieldbus</span><span>Modbus TCP</span><span>EtherNet/IP</span><span>DeviceNet</span><span>IEC 61850</span></div></div>
+        <div class="prod rv"><span class="mono">P-06</span><h3>Ingeniería, lotes e información</h3><div class="chips"><span>Engineering Workplace</span><span>Batch Management</span><span>Information Manager</span><span>Cyber seguridad</span><span>Evolución de sistemas</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="sec" id="proyectos" aria-labelledby="t-proyectos">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="idx mono">04 / Proyectos</div>
+      <div>
+        <h2 id="t-proyectos">Trabajo reciente en faenas mineras.</h2>
+        <p>Una muestra de proyectos donde FSM estuvo a cargo del sistema de control.</p>
+      </div>
+    </div>
+    <div class="proj-list">
+      <article class="proj rv">
+        <div class="proj-ph"><span class="stamp mono">Minera Candelaria</span><img src="assets/img/gabinete.webp" alt="Gabinete de control DCS integrado por FSM" loading="lazy" width="1600" height="1067"></div>
+        <div>
+          <span class="mono" style="color:var(--red)">Integración · FAT aprobada</span>
+          <h3>Integración de gabinetes para el Depósito de Relaves Los Diques</h3>
+          <p>Integramos cuatro gabinetes DCS y cinco gabinetes Remote I/O. Las pruebas FAT se completaron con éxito y permitieron la aceptación del cliente.</p>
+          <dl class="spec">
+            <dt>Cliente</dt><dd>Compañía Contractual Minera Candelaria</dd>
+            <dt>Sistema</dt><dd>DCS ABB, plataforma versión 6.0</dd>
+            <dt>Alcance</dt><dd>Gabinetes NEMA 12 y 4X, lógicas de control, pantallas de operación, planos de disposición y alambrado, expansión de licencias</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="proj rv">
+        <div class="proj-ph"><span class="stamp mono">Minera Escondida</span><img src="assets/img/sala-control.webp" alt="Ingenieros trabajando en una sala de control" loading="lazy" width="1600" height="589" style="object-position:70% center"></div>
+        <div>
+          <span class="mono" style="color:var(--red)">Gestión de activos · 800xA</span>
+          <h3>Asset Management y gestión de alarmas</h3>
+          <p>Con Asset Optimization de 800xA monitoreamos el estado de salud de nodos, dispositivos de comunicación, instrumentos y accionamientos, para pasar de una mantención reactiva a una preventiva y proactiva.</p>
+          <dl class="spec">
+            <dt>Herramientas</dt><dd>Asset Optimization y Alarm Management</dd>
+            <dt>Buses</dt><dd>HART, PROFIBUS y Foundation Fieldbus</dd>
+            <dt>Resultado</dt><dd>Parametrización de instrumentos desde la estación de ingeniería y análisis estadístico de alarmas en línea</dd>
+          </dl>
+        </div>
+      </article>
+    </div>
+    <div class="proj-mini">
+      <article class="mini rv"><img src="assets/img/equipo-centinela-sm.webp" alt="Equipo de FSM en faena de Minera Centinela" loading="lazy" width="800" height="599"><div><span class="mono" style="color:var(--red)">Minería</span><h3>Integración Minera Centinela</h3><p>Equipo FSM en terreno durante la integración del sistema de control.</p></div></article>
+      <article class="mini rv"><img src="assets/img/gabinete-sqm-sm.webp" alt="Gabinete de control para SQM" loading="lazy" width="800" height="640"><div><span class="mono" style="color:var(--red)">Minería no metálica</span><h3>Gabinete SQM</h3><p>Armado e integración de gabinete de control para SQM.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- EN TERRENO -->
+<section class="sec" style="padding-top:0" aria-labelledby="t-terreno">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="idx mono">05 / En terreno</div>
+      <div><h2 id="t-terreno">Ingenieros en faena, no solo en la oficina.</h2></div>
+    </div>
+    <div class="field">
+      <figure class="f1 rv"><img src="assets/img/camioneta.webp" alt="Camionetas de FSM en faena minera" loading="lazy" style="object-position:40% center"><figcaption class="mono">Logística propia en faena</figcaption></figure>
+      <figure class="f2 rv"><img src="assets/img/mantencion-sm.webp" alt="Técnico de FSM trabajando en un gabinete de control" loading="lazy"><figcaption class="mono">Mantención</figcaption></figure>
+      <figure class="f3 rv"><img src="assets/img/capacitacion-sm.webp" alt="Capacitación de sistemas de control dictada por FSM" loading="lazy"><figcaption class="mono">Capacitación</figcaption></figure>
+      <figure class="f4 rv"><img src="assets/img/sala-control-sm.webp" alt="Configuración en sala de control" loading="lazy" style="object-position:75% center"><figcaption class="mono">Sala de control</figcaption></figure>
+      <figure class="f5 rv"><img src="assets/img/candelaria-sm.webp" alt="Planta de Minera Candelaria" loading="lazy"><figcaption class="mono">Atacama</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="sec light" id="nosotros" aria-labelledby="t-nosotros">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="idx mono">06 / Nosotros</div>
+      <div><h2 id="t-nosotros">Servicios y Aplicaciones de Ingeniería de Sistemas y Cía. Ltda.</h2></div>
+    </div>
+    <div class="about">
+      <div class="rv">
+        <p class="big">FSM inicia sus actividades en <strong>2002</strong>. Hoy somos un equipo de profesionales con <strong>más de 20 años</strong> de experiencia en automatización de procesos, capacitados y certificados por ABB, con conocimiento de los procesos de minería y de celulosa y papel.</p>
+        <div class="timeline">
+          <div><b>2002</b><span>Inicio de actividades</span></div>
+          <div><b>80+</b><span>Proyectos ejecutados</span></div>
+          <div><b>3</b><span>Industrias</span></div>
+          <div><b>24×365</b><span>Soporte</span></div>
+        </div>
+      </div>
+      <div class="mv rv">
+        <div><h3>Misión</h3><p>Entregar soluciones en automatización de procesos industriales (ingeniería básica y de detalles, capacitación, desarrollo de aplicaciones de control, mantenimiento y servicios) como una alternativa de calidad y altamente competitiva.</p></div>
+        <div><h3>Visión</h3><p>Ser líderes en la Quinta Región en la distribución de equipos de control ABB.</p></div>
+        <div><h3>Respaldo</h3><p>ABB Authorized Value Provider, certificados como System Integrator para System 800xA.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="sec" id="contacto" aria-labelledby="t-contacto">
+  <div class="wrap contact">
+    <div class="rv">
+      <div class="sec-head" style="display:block;margin-bottom:0">
+        <div class="idx mono" style="max-width:200px;margin-bottom:22px">07 / Contacto</div>
+        <h2 id="t-contacto">¿Tiene una licitación, una migración o un sistema que mantener?</h2>
+        <p>Cuéntenos el alcance y le respondemos con una propuesta técnica.</p>
+      </div>
+      <ul class="c-list">
+        <li><span class="mono">Teléfono</span><a href="tel:+56322990953" data-phone>+56 32 299 0953</a></li>
+        <li><span class="mono">Correo</span><a href="mailto:fidel.salazar@fsmltda.cl">fidel.salazar@fsmltda.cl</a></li>
+        <li><span class="mono">Oficina</span><a href="https://www.google.com/maps/search/?api=1&query=%C3%81lvarez+660%2C+Vi%C3%B1a+del+Mar" target="_blank" rel="noopener">Álvarez 660, Dpto. 71A, Viña del Mar</a></li>
+      </ul>
+    </div>
+    <form class="rv" id="quote" novalidate>
+      <div class="f-row">
+        <label><span class="mono">Nombre</span><input name="nombre" autocomplete="name" required></label>
+        <label><span class="mono">Empresa</span><input name="empresa" autocomplete="organization" required></label>
+      </div>
+      <div class="f-row">
+        <label><span class="mono">Correo</span><input name="correo" type="email" autocomplete="email" required></label>
+        <label><span class="mono">Teléfono</span><input name="telefono" type="tel" autocomplete="tel"></label>
+      </div>
+      <label><span class="mono">Necesito</span>
+        <select name="servicio">
+          <option>Cotizar un proyecto o licitación</option>
+          <option>Ingeniería básica o de detalles</option>
+          <option>Migración de sistema de control</option>
+          <option>Contrato de mantención</option>
+          <option>Capacitación</option>
+          <option>Equipos ABB</option>
+        </select>
+      </label>
+      <label><span class="mono">Detalle</span><textarea name="detalle" placeholder="Planta, sistema actual, plazos…"></textarea></label>
+      <button class="btn btn-red" type="submit">Enviar solicitud <span class="arr">→</span></button>
+      <small>Al enviar se abrirá su correo con la solicitud lista para despachar.</small>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/brand/fsm-logo-blanco.svg" alt="FSM Ltda." width="66" height="34">
+    <p>© <span id="yr">2026</span> FSM Ltda. · Automatización de procesos industriales · Viña del Mar, Chile</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var hdr=document.getElementById('hdr'), hero=document.getElementById('hero'), stage=hero.querySelector('.hero-stage');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp=function(v,a,b){return Math.max(a,Math.min(b,v))};
+  var ticking=false;
+  function frame(){
+    ticking=false;
+    var y=window.scrollY||window.pageYOffset;
+    hdr.classList.toggle('solid', y>40);
+    if(reduce) return;
+    var total=hero.offsetHeight-window.innerHeight;
+    var p=clamp(y/total,0,1);
+    var s=stage.style;
+    s.setProperty('--p',p.toFixed(4));
+    s.setProperty('--s',(1.28-0.28*p).toFixed(4));
+    s.setProperty('--c1',clamp(1-p*2.4,0,1).toFixed(3));
+    s.setProperty('--c2',clamp((p-0.42)*3,0,1).toFixed(3));
+    s.setProperty('--o',(1-0.25*clamp((p-0.3)*2,0,1)).toFixed(3));
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
+  window.addEventListener('resize',frame);
+  frame();
+
+  // Menú móvil
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+  nav.addEventListener('click',function(e){if(e.target.closest('a')){nav.classList.remove('open');btn.setAttribute('aria-expanded',false)}});
+
+  // Aparición al hacer scroll
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  } else els.forEach(function(el){el.classList.add('in')});
+
+  // Formulario → correo (sitio estático, sin servidor)
+  document.getElementById('quote').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target;
+    if(!f.reportValidity()) return;
+    var d=new FormData(f);
+    var body='Nombre: '+d.get('nombre')+'\nEmpresa: '+d.get('empresa')+'\nCorreo: '+d.get('correo')+'\nTeléfono: '+(d.get('telefono')||'-')+'\nNecesito: '+d.get('servicio')+'\n\n'+(d.get('detalle')||'');
+    location.href='mailto:fidel.salazar@fsmltda.cl?subject='+encodeURIComponent('Solicitud web: '+d.get('servicio')+' — '+d.get('empresa'))+'&body='+encodeURIComponent(body);
+  });
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
