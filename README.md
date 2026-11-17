@@ -11,6 +11,7 @@ assets/brand/               Logo FSM redibujado en vectorial (SVG)
   fsm-logo.svg              Versión principal (fondo rojo)
   fsm-logo-blanco.svg       Para fondos oscuros
   fsm-logo-rojo.svg         Para fondos claros
+assets/clientes/            Logos de clientes tomados del sitio original (WebP transparente)
 assets/img/                 Fotos del sitio original mejoradas con IA (2K, WebP)
                             *-sm.webp = versión liviana de 800 px
 ```
@@ -24,7 +25,7 @@ assets/img/                 Fotos del sitio original mejoradas con IA (2K, WebP)
 
 ## Contenido
 
-Todo el texto, los nombres de clientes y las fotos provienen del sitio publicado. No se agregaron clientes ni cifras nuevas.
+Todo el texto, los nombres y logos de clientes y las fotos provienen del sitio publicado. No se agregaron clientes ni cifras nuevas.
 
 ## Pendiente antes de publicar
 
@@ -32,6 +33,10 @@ Todo el texto, los nombres de clientes y las fotos provienen del sitio publicado
 - [ ] WhatsApp, si lo tienen.
 - [ ] Vigencia del certificado ABB Authorized Value Provider (el publicado vencía en septiembre de 2017).
 - [ ] El formulario abre el correo del visitante (`mailto`). Para recibirlo sin eso, conectar Formspree, Netlify Forms o similar.
+
+## Crédito
+
+El pie de página incluye "Sitio desarrollado por Barreau Mol" con la marca `bm`. Si Barreau Mol publica su sitio, enlazarlo ahí.
 
 ## Ver en local
 
